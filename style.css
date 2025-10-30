@@ -1,0 +1,717 @@
+/* --- Global Resets & Font --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* This makes padding and border part of the element's width/height */
+  font-family: Arial, sans-serif;
+  /* Amazon uses 'Amazon Ember', but Arial is a safe fallback */
+}
+
+body {
+  /* A light gray background, similar to the main Amazon site */
+  background-color: #e3e6e6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /* Links will inherit color from their parent */
+}
+
+
+.header-tag{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* --- Utility Classes --- */
+.nav-border {
+  border: 1px solid transparent;
+  padding: 8px 6px;
+  border-radius: 3px;
+  /* Slight rounded corners */
+}
+
+.nav-border:hover {
+  border: 1px solid #ffffff;
+}
+
+/* Sub Nav Bar Border */
+.nav-border2 {
+  border: 1px solid transparent;
+  padding: 8px 6px;
+  border-radius: 3px;
+  /* Slight rounded corners */
+}
+
+.nav-border2:hover {
+  border: 1.5px solid #ffffff;
+}
+
+.nav-line-1 {
+  font-size: 12px;
+  color: #ffffff;
+  display: block;
+  /* Makes it stack on top */
+}
+
+.nav-line-2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+
+/* --- Main Navigation Bar (Top) --- */
+.navbar-main {
+  height: 60px;
+  background-color: #131921;
+  /* Dark Amazon color */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 5px;
+  /* Adds a small space between flex items */
+}
+
+/* 1. Logo */
+.nav-logo {
+  padding: 0;
+  /* Remove default padding from nav-border for the logo */
+}
+
+.logo {
+  width: 100px;
+  height: 50px;
+  /* Using the white Amazon logo on a transparent background */
+  background-image: url("https://pngimg.com/uploads/amazon/amazon_PNG25.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 2. Deliver to Address */
+.nav-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-address .fa-location-dot {
+  margin-top: 15px;
+  /* Aligns the icon with the second line of text */
+}
+
+/* 3. Search Bar */
+.nav-search {
+  display: flex;
+  flex-grow: 1;
+  /* This is key: it makes the search bar take up all available space */
+  margin: 0 10px;
+  height: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+  /* This keeps the child elements (button, input) contained by the rounded corners */
+}
+
+.nav-search:hover {
+  box-shadow: 0px 0px 1px 3px rgb(246, 159, 73);
+
+}
+
+.search-select {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background-color: #f3f3f3;
+  width: 55px;
+  height: 50px;
+  color: #0F1111;
+  border: none;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  border-right: 1px solid #ccc;
+  /* Separator line */
+  cursor: pointer;
+  color: gray;
+}
+
+.search-select:hover {
+  background-color: #e6e6e6;
+  /* Darker gray on hover */
+  color: rgb(0, 0, 0);
+}
+
+.search-input {
+  width: 100%;
+  /* Takes up all remaining space within .nav-search */
+  border: none;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  outline: none;
+  /* Removes the blue glow on click */
+}
+
+.search-button {
+  background-color: #febd69;
+  /* Amazon orange */
+  border: none;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #131921;
+  /* Icon color */
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #f3a847;
+  /* Darker orange on hover */
+}
+
+/* 4. Language */
+.nav-lang {
+  display: flex;
+  align-items: flex-end;
+  /* Aligns items to the bottom */
+  gap: 3px;
+  padding-bottom: 12px;
+  /* Manually adjust vertical alignment */
+}
+
+.nav-lang .flag {
+  font-size: 16px;
+}
+
+.nav-lang .lang-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-lang .fa-caret-down {
+  font-size: 10px;
+  color: #cccccc;
+  margin-left: 2px;
+}
+
+/* 5. Account & Lists */
+.nav-account .fa-caret-down {
+  font-size: 10px;
+  color: #cccccc;
+  margin-left: 2px;
+}
+
+/* 6. Returns & Orders */
+/* No extra styles needed, uses .nav-line-1 and .nav-line-2 */
+
+/* 7. Cart */
+.nav-cart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.nav-cart .fa-cart-shopping {
+  font-size: 24px;
+}
+
+.nav-cart .cart-text {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  /* Align text with bottom of icon */
+}
+
+
+/* --- Sub Navigation Bar (Bottom) --- */
+.navbar-sub {
+  height: 39px;
+  background-color: #232f3e;
+  /* Lighter, bluish dark color */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 5px;
+  /* Space between links */
+}
+
+.navbar-sub a {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* Give links some breathing room */
+}
+
+.navbar-sub .fa-bars {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+/* Hero image */
+
+/* .hero-section{
+  background-image: url("/images/1.jpg");
+  background-size: cover;
+  height: 600px;
+} */
+.hero-section {
+  background-image: url("images/1.jpg");
+  background-size: contain;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  
+}
+
+.hero-section {
+  background-image: url("/images/1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  background: linear-gradient(to bottom, transparent, #e3e6e6);
+}
+
+.paragraph-text{
+  background-color: #f5f6f6;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #0f1111;
+  width: 97%;
+  margin-top: -350px;
+  margin-left: 20px;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 20;
+}
+
+.shop-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-top: 25px;
+  position: relative;
+  z-index: 10;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-card {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-card h2 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.single-image {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.image-item p {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.card-link {
+  color: #007185;
+  font-size: 13px;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.card-link:hover {
+  color: #000000;
+}
+
+@media (max-width: 1200px) {
+  .shop-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .shop-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .shop-section {
+    grid-template-columns: 1fr;
+
+  }
+}
+
+
+
+.paragraph-link {
+  color: #2162a1;
+  text-decoration: none;
+}
+
+.paragraph-link:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+
+/* Footer CSS */
+
+.line-1{
+  background-color:#Cfcdcd;
+  /* margin-top: 20px; */
+  position: relative;
+  bottom: -20px;
+  height: 1px;
+  width:100%;
+}
+/* Sign In Section */
+.footer-signin {
+  background: linear-gradient(to bottom, #fff, #f7f8f8);
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid #e7e7e7;
+  height: 190px;
+}
+
+.signin-content h3 {
+  padding-top: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #0f1111;
+}
+
+.signin-button {
+  background-color: #fdda2a;
+  border: 0px  #a88734;
+  border-radius: 20px;
+  padding: 5px 0;
+  width: 210px;
+  height: 30px;
+  font-size: 13px;
+  font-weight:500;
+  cursor: pointer;
+  color: #111;
+}
+
+.signin-button:hover {
+background-color: #f7cf06;
+}
+
+.new-customer {
+  font-size: 10px;
+  margin-top: 6px;
+  color: #0f1111;
+}
+
+.new-customer a {
+  color: #0066c0;
+  text-decoration: underline;
+}
+
+.new-customer a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.line-2{
+  background-color:#Cfcdcd;
+  height: 1px;
+  width:100%;
+  position: relative;
+  bottom: 22px;
+}
+
+/* Back to Top */
+.back-to-top {
+  background-color: #37475a;
+  text-align: center;
+  padding: 15px;
+}
+
+.back-to-top a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.back-to-top:hover {
+  background-color: #465363;
+  cursor: pointer;
+  
+}
+
+/* Footer Links */
+.footer-links {
+  background-color: #232f3e;
+  padding: 50px 220px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1500px; ;
+  justify-content: center;
+}
+
+.footer-column h4 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: #232f3e;
+  border-top: 1px solid #3a4553;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.footer-logo img {
+  width: 85px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-options {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-btn {
+  background-color: transparent;
+  border: 1px solid #848688;
+  color: #cccccc;
+  padding: 8px 15px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Footer Services */
+.footer-services {
+  background-color: #131a22;
+  padding: 25px 20px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 20px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.service-item h5 {
+  color: #dddddd;
+  font-size: 13px;
+  font-weight: lighter;
+  
+  
+
+}
+
+.service-item:hover h5{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.service-item p {
+  color: #999999;
+  font-size: 12px;
+  line-height: 1;
+  
+}
+
+.service-item-2{
+  color: #999999;
+  font-size: 12px;
+}
+
+.service-item-2:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.service-item:hover p {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.c-side{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1px;
+  left: 140px;
+  /* margin-left: 100px;
+  padding-left: 20px;
+  padding-r: 20px; */
+
+
+}
+
+/* Footer Legal */
+.footer-legal {
+  background-color: #131a22;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.legal-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.legal-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  color: #ddd;
+  font-size: 12px;
+}
+
+.Privacy-Choices{
+  background-color: #ffffff;
+  background-image:url(/images/Privacy-Choices.png);
+  background-size: contain;
+  height: 15px;
+  width: 28.5px;
+  position: relative;
+  bottom: 1px;
+  right: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .service-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-options {
+    flex-direction: column;
+  }
+}
